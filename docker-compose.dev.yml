@@ -58,6 +58,25 @@ services:
     networks:
       - log_net_v2
 
+  # logv2_zookeeper:
+  #   container_name: logv2_zookeeper
+  #   image: confluentinc/cp-zookeeper:7.3.2
+  #   environment:
+  #     ZOOKEEPER_CLIENT_PORT: 2181
+  #     ZOOKEEPER_TICK_TIME: 2000
+  #
+  # logv2_kafka:
+  #   container_name: logv2_kafka
+  #   image: confluentinc/cp-kafka:latest
+  #   depends_on:
+  #     - logv2_zookeeper
+  #   environment:
+  #     KAFKA_BROKER_ID: 1
+  #     KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  #     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+  #     KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+
 networks:
   log_net_v2:
     driver: bridge

@@ -29,4 +29,11 @@ dstatus:
 dlogs-all:
 	docker compose -f docker-compose.dev.yml logs -f
 
-.PHONY: dd-dev dbr-dev dps-dev dlogs-dev drestart dstatus dlogs-all
+# Миграции базы данных
+migrate:
+	docker exec -it logv2_app go run cmd/migrate/main.go -action=migrate
+
+rollback:
+	docker exec -it logv2_app go run cmd/migrate/main.go -action=rollback
+
+.PHONY: dd-dev dbr-dev dps-dev dlogs-dev drestart dstatus dlogs-all migrate rollback
