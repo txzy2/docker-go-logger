@@ -36,4 +36,7 @@ migrate:
 rollback:
 	docker exec -it logv2_app go run cmd/migrate/main.go -action=rollback
 
-.PHONY: dd-dev dbr-dev dps-dev dlogs-dev drestart dstatus dlogs-all migrate rollback
+docs-gen:
+	docker exec -it logv2_app swag init -g cmd/app/main.go -o docs
+
+.PHONY: dd-dev dbr-dev dps-dev dlogs-dev drestart dstatus dlogs-all migrate rollback docs-gen
